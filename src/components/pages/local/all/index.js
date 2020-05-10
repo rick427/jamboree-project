@@ -2,26 +2,26 @@ import React, {useState, useContext, useEffect} from 'react';
 import {Card, Table, Spin, Modal, Form, Input} from 'antd';
 import { LoadingOutlined, EditOutlined, ExclamationCircleOutlined, UnorderedListOutlined, DeleteOutlined } from '@ant-design/icons';
 import { toast, Zoom} from 'react-toastify';
-import MetroContext from '../../../../context/metro/MetroContext';
+import LocalContext from '../../../../context/local/LocalContext';
 import ProvinceContext from '../../../../context/province/provinceContext';
-import CreateMetro from "../create";
+import CreateLocal from "../create";
 
-const MetroDistricts = () => {
+const LocalDistricts = () => {
     const [form] = Form.useForm();
-    const [metro, setMetro] = useState({});
+    const [local, setLocal] = useState({});
     const [created, setCreated] = useState(false);
     const [visible, setVisible] = useState(false);
 
     const provinceContext = useContext(ProvinceContext);
-    const metroContext = useContext(MetroContext);
+    const localContext = useContext(LocalContext);
     
-    const {metros, getMetros, editMetro, deleteMetro, clearErrors, error, loading, setLoading} = metroContext;
+    const {locals, getLocals, editLocals, deleteLocals, clearErrors, error, loading, setLoading} = localContext;
     const {provinces, getProvinces} = provinceContext;
 
     const { confirm } = Modal;
-    
+
     useEffect(() => {
-        getMetros();
+        getLocals();
         getProvinces();
         
         if(error) toast.error(error, {autoClose: 4000, transition: Zoom});
@@ -31,14 +31,14 @@ const MetroDistricts = () => {
 
     const showDeleteConfirm = (data) => {
         confirm({
-          title: 'Are you sure delete this metro ?',
+          title: 'Are you sure delete this local district ?',
           icon: <ExclamationCircleOutlined />,
-          content: `Metro #${data.id} -- ${data.name} / ${data.code}`,
+          content: `Local District #${data.id} -- ${data.name} / ${data.code}`,
           okText: 'Yes',
           okType: 'danger',
           cancelText: 'No',
           onOk() {
-            deleteMetro(data.id);
+            deleteLocals(data.id);
           },
           onCancel() {
             console.log('Cancel');
@@ -48,7 +48,7 @@ const MetroDistricts = () => {
 
     const showModal = data => {
         setVisible(true);
-        setMetro(data)
+        setLocal(data)
     }
 
     const editProvinceForm = async () => {
@@ -62,8 +62,8 @@ const MetroDistricts = () => {
             if(values.extradata === undefined) delete values.extradata;
             if(values.provinceId === undefined) delete values.provinceId;
 
-            const updated = {...metro, ...values};
-            editMetro(updated);
+            const updated = {...local, ...values};
+            editLocals(updated);
             setVisible(false);
         } catch (error) {
             console.log(error);
@@ -127,14 +127,14 @@ const MetroDistricts = () => {
     const cardTitle = (
         <span>
             <UnorderedListOutlined />{' '} 
-            metro municipalities
+            local municipalities
         </span>
     )
 
     const modalTitle = (
         <span style={{color: '#1890ff'}}>
             <EditOutlined/>{' '}
-            Edit Metro Municipality
+            Edit Local Municipality
         </span>
     )
 
@@ -142,13 +142,13 @@ const MetroDistricts = () => {
         labelCol: { span: 5 },
         wrapperCol: { span: 19 },
     };
-    
+
     return (
-        <Spin tip="Fetching all metros..." indicator={antIcon} spinning={loading}>
+        <Spin tip="Fetching all locals districts..." indicator={antIcon} spinning={loading}>
 
             <Card title={cardTitle} headStyle={headerStyles}> 
-                <CreateMetro provinces={provinces} setCreated={callback => setCreated(callback)}/>
-                <Table columns={columns} dataSource={metros && metros} bordered pagination={false}/>
+                <CreateLocal provinces={provinces} setCreated={callback => setCreated(callback)}/>
+                <Table columns={columns} dataSource={locals && locals} bordered pagination={false}/>
             </Card>
 
             <Modal
@@ -160,19 +160,19 @@ const MetroDistricts = () => {
             >
                 <Form {...layout} form={form}>
                     <Form.Item label="I.D" name="id">
-                        <Input placeholder={metro && metro.id} disabled/>
+                        <Input placeholder={local && local.id} disabled/>
                     </Form.Item>
                     <Form.Item label="Name" name="name">
-                        <Input placeholder={metro && metro.name} />
+                        <Input placeholder={local && local.name} />
                     </Form.Item>
                     <Form.Item label="Code" name="code">
-                        <Input placeholder={metro && metro.code}/>
+                        <Input placeholder={local && local.code}/>
                     </Form.Item>
                     <Form.Item label="Extra Data" name="extradata">
-                        <Input placeholder={metro && metro.extradata} disabled/>
+                        <Input placeholder={local && local.extradata} disabled/>
                     </Form.Item>
                     <Form.Item label="Province I.D" name="provinceId">
-                        <Input placeholder={metro && metro.provinceId} disabled/>
+                        <Input placeholder={local && local.provinceId} disabled/>
                     </Form.Item>
                 </Form>
             </Modal>
@@ -180,4 +180,4 @@ const MetroDistricts = () => {
     )
 }
 
-export default MetroDistricts
+export default LocalDistricts

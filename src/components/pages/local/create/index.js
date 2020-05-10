@@ -2,16 +2,16 @@ import React, {useState, useContext} from 'react';
 import {Button, Form, Input, Modal, Select} from 'antd';
 import { PlusOutlined, FormOutlined } from '@ant-design/icons';
 import { toast, Zoom } from 'react-toastify';
-import MetroContext from '../../../../context/metro/MetroContext';
-import styles from './createMetro.module.css';
+import LocalContext from '../../../../context/local/LocalContext';
+import styles from './local.module.css';
 const {Option} = Select;
 
-const CreateMetro = ({setCreated, provinces}) => {
+const CreateLocal = ({setCreated, provinces}) => {
     const [form] = Form.useForm();
     const [visible, setVisible] = useState(false);
-    const metroContext = useContext(MetroContext);
+    const localContext = useContext(LocalContext);
 
-    const {createMetros, loading, setLoading, error} = metroContext;
+    const {createLocals, loading, setLoading, error} = localContext;
 
     const showModal = () => {
         setVisible(true);
@@ -26,10 +26,10 @@ const CreateMetro = ({setCreated, provinces}) => {
         setLoading(true);
         setCreated(true)
         const values = await form.validateFields();
-        createMetros(values);
+        createLocals(values);
    
         if(!error) {
-            toast.success(`Metro -- ${values.name} has been created`, {autoClose: 4000, transition: Zoom});
+            toast.success(`Local district -- ${values.name} has been created`, {autoClose: 4000, transition: Zoom});
             hideModal();
             setCreated(false);
         }
@@ -54,7 +54,7 @@ const CreateMetro = ({setCreated, provinces}) => {
     return (
         <div className={styles.wrapper}>
             <Button icon={<PlusOutlined />} type="primary" onClick={showModal}>
-                Create Metro
+                Create Local District
             </Button>
 
             <Modal 
@@ -66,11 +66,11 @@ const CreateMetro = ({setCreated, provinces}) => {
               confirmLoading={loading}
             >
                 <Form {...layout} form={form}>
-                    <Form.Item label="Name" name="name" rules={[{required: true, message: 'Metro name is required'}]}>
-                        <Input placeholder="Enter metro name" />
+                    <Form.Item label="Name" name="name" rules={[{required: true, message: 'Local name is required'}]}>
+                        <Input placeholder="Enter name" />
                     </Form.Item>
 
-                    <Form.Item label="Code" name="code" rules={[{required: true, message: 'Metro code is required'}]}>
+                    <Form.Item label="Code" name="code" rules={[{required: true, message: 'Local code is required'}]}>
                         <Input placeholder="Enter code"/>
                     </Form.Item>
 
@@ -91,4 +91,4 @@ const CreateMetro = ({setCreated, provinces}) => {
     )
 }
 
-export default CreateMetro;
+export default CreateLocal
