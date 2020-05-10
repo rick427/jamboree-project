@@ -37,6 +37,7 @@ const AppLayout = ({match, history}) => {
    const goToMetroDistict = () => history.push('/main/metro/municipality/all');
    const goToLocalDistict = () => history.push('/main/local/municipality/all');
    const goToWards = () => history.push('/main/wards/all');
+   const gotToArea = () => history.push('/main/area/all')
 
    const defaultOpenKeys = history.location.pathname.split('/')[2];
    const selectedKeys = history.location.pathname.substr(1);
@@ -104,10 +105,10 @@ const AppLayout = ({match, history}) => {
                   <Menu.Item key="main/local/municipality/all" icon={<ClusterOutlined />} onClick={goToLocalDistict}>
                      Local Districts
                   </Menu.Item>
-                  <Menu.Item key="main//all" icon={<ClusterOutlined />} onClick={goToWards}>
+                  <Menu.Item key="main/wards/all" icon={<ClusterOutlined />} onClick={goToWards}>
                      Ward
                   </Menu.Item>
-                  <Menu.Item key="area" icon={<ClusterOutlined />}>
+                  <Menu.Item key="main/area/all" icon={<ClusterOutlined />} onClick={gotToArea}>
                      Area
                   </Menu.Item>
                   <Menu.Item key="cbo" icon={<ClusterOutlined />}>

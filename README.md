@@ -1,5 +1,9 @@
 A web app for Jamboree
 
+## Sreenshot ##
+
+<img src="/screenshot/jam.PNG" alt="screenshot"/>
+
 ## How to run
 
 1. Install NODE

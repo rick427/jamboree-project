@@ -60,7 +60,7 @@ const LocalState = props => {
 
     const deleteLocals = async (id) => {
         try {
-            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/district-municipalities/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/district-municipalities/${id}`);
             dispatch({
                 type: DELETE_DISTRICT,
                 payload: id

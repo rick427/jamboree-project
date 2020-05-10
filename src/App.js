@@ -7,6 +7,7 @@ import ProvinceState from './context/province/provinceState';
 import MetroState from './context/metro/MetroState';
 import LocalState from './context/local/LocalState';
 import WardState from './context/ward/WardState';
+import AreaState from './context/area/AreaState';
 
 import PrivateRoute from './components/privateRoute';
 import Landing from './components/landingPage';
@@ -24,15 +25,17 @@ function App() {
         <MetroState>
           <LocalState>
             <WardState>
-              <Router>
-                <div className="wrapper">
-                  <Switch>
-                    <Route exact path="/" component={Landing}/>
-                    <Route exact path="/login" component={Login}/>
-                    <PrivateRoute path="/main" component={AppLayout}/>
-                  </Switch>
-                </div>
-              </Router>
+              <AreaState>
+                <Router>
+                  <div className="wrapper">
+                    <Switch>
+                      <Route exact path="/" component={Landing}/>
+                      <Route exact path="/login" component={Login}/>
+                      <PrivateRoute path="/main" component={AppLayout}/>
+                    </Switch>
+                  </div>
+                </Router>
+              </AreaState>
             </WardState>
           </LocalState>
         </MetroState>

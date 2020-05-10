@@ -28,6 +28,11 @@ export const CREATE_WARDS = 'CREATE_WARDS';
 export const EDIT_WARDS = 'EDIT_WARDS';
 export const DELETE_WARDS = 'DELETE_WARD';
 
+export const GET_ALL_AREAS = 'GET_ALL_AREAS';
+export const CREATE_AREA = 'CREATE_AREA';
+export const EDIT_AREA = 'EDIT_AREA';
+export const DELETE_AREA = 'DELETE_AREA';
+
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAIL = 'REGISTER_FAIL'
 export const USER_LOADED = 'USER_LOADED'
