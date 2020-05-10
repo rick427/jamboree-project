@@ -1,17 +1,17 @@
 import React, {useState, useContext} from 'react';
-import {Button, Form, Input, Modal, Select} from 'antd';
+import {Button, Form, Input, InputNumber, Modal, Select} from 'antd';
 import { PlusOutlined, FormOutlined } from '@ant-design/icons';
 import { toast, Zoom } from 'react-toastify';
-import MetroContext from '../../../../context/metro/MetroContext';
-import styles from './createMetro.module.css';
+import WardContext from '../../../../context/ward/WardContext';
+import styles from './ward.module.css';
 const {Option} = Select;
 
-const CreateMetro = ({setCreated, provinces}) => {
+const CreateWard = ({setCreated}) => {
     const [form] = Form.useForm();
     const [visible, setVisible] = useState(false);
-    const metroContext = useContext(MetroContext);
+    const wardContext = useContext(WardContext);
 
-    const {createMetros, loading, setLoading, error} = metroContext;
+    const {createWard, loading, setLoading, error} = wardContext;
 
     const showModal = () => {
         setVisible(true);
@@ -26,10 +26,10 @@ const CreateMetro = ({setCreated, provinces}) => {
         setLoading(true);
         setCreated(true)
         const values = await form.validateFields();
-        createMetros(values);
+        createWard(values);
    
         if(!error) {
-            toast.success(`Metro -- ${values.name} has been created`, {autoClose: 4000, transition: Zoom});
+            toast.success(`Ward -- ${values.name} has been created`, {autoClose: 4000, transition: Zoom});
             hideModal();
             setCreated(false);
         }
@@ -46,14 +46,14 @@ const CreateMetro = ({setCreated, provinces}) => {
     const headerStyles = (
         <span style={{color: '#3DA7FF'}}>
             <FormOutlined />{' '}
-            Create Metro
+            Create Ward
         </span>
     )
 
     return (
         <div className={styles.wrapper}>
             <Button icon={<PlusOutlined />} type="primary" onClick={showModal}>
-                Create Metro
+                Create Ward
             </Button>
 
             <Modal 
@@ -65,23 +65,22 @@ const CreateMetro = ({setCreated, provinces}) => {
               confirmLoading={loading}
             >
                 <Form {...layout} form={form}>
-                    <Form.Item label="Name" name="name" rules={[{required: true, message: 'Metro name is required'}]}>
+                    <Form.Item label="Name" name="name" rules={[{required: true, message: 'Ward name is required'}]}>
                         <Input placeholder="Enter metro name" />
                     </Form.Item>
 
-                    <Form.Item label="Code" name="code" rules={[{required: true, message: 'Metro code is required'}]}>
-                        <Input placeholder="Enter code"/>
+                    <Form.Item label="Number" name="number" rules={[{required: true, message: 'Ward code is required'}]}>
+                        <InputNumber placeholder="Enter Number" style={{width: 370}}/>
                     </Form.Item>
 
-                    <Form.Item label="Province" name="provinceId" rules={[{required: true, message: 'A province is required'}]}>
-                        <Select placeholder="Select a province" showSearch optionFilterProp="children" filterOption>
-                            {provinces && provinces.length > 0 && provinces.map(province => {
-                                return (
-                                    <Option key={province.id} value={province.id}>
-                                        {province.name}
-                                    </Option>
-                                )
-                            })}
+                    <Form.Item label="Extra Data" name="extradata" rules={[{required: true, message: 'Extra data is required'}]}>
+                        <Input placeholder="Enter extra data"/>
+                    </Form.Item>
+
+                    <Form.Item label="Ward Type" name="wardType" rules={[{required: true, message: 'A ward type is required'}]}>
+                        <Select placeholder="Select a ward type" showSearch optionFilterProp="children" filterOption>
+                            <Option key={1} value="METROPOLITAN">METROPOLITAN</Option>
+                            <Option key={2} value="LOCAL">LOCAL</Option>
                         </Select>
                     </Form.Item>
                 </Form>
@@ -89,5 +88,4 @@ const CreateMetro = ({setCreated, provinces}) => {
         </div>
     )
 }
-
-export default CreateMetro;
+export default CreateWard;

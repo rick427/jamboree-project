@@ -5,6 +5,7 @@ import CboRoutes from './cbo';
 import ProvinceRoutes from './province';
 import MetroRoutes from './metro';
 import LocalRoutes from './local';
+import WardsRoutes from './wards'
 
 const AppPages = ({match}) => {
     return (
@@ -15,8 +16,9 @@ const AppPages = ({match}) => {
           <Route path={`${match.url}/province`} component={ProvinceRoutes}/>
           <Route path={`${match.url}/metro/municipality`} component={MetroRoutes}/>
           <Route path={`${match.url}/local/municipality`} component={LocalRoutes}/>
+          <Route path={`${match.url}/wards`} component={WardsRoutes}/>
           {/* 
-          <Route path={`${match.url}/wards`} component={MetroRoutes}/>
+          
           <Route path={`${match.url}/area`} component={MetroRoutes}/>
           <Route path={`${match.url}/cbo`} component={MetroRoutes}/>
           <Route path={`${match.url}/beneficiary`} component={MetroRoutes}/>

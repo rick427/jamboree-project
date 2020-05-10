@@ -23,6 +23,11 @@ export const CREATE_DISTRICT = 'CREATE_DISTRICT';
 export const EDIT_DISTRICT = 'EDIT_DISTRICT';
 export const DELETE_DISTRICT = 'DELETE_DISTRICT';
 
+export const GET_ALL_WARDS = 'GET_ALL_WARDS';
+export const CREATE_WARDS = 'CREATE_WARDS';
+export const EDIT_WARDS = 'EDIT_WARDS';
+export const DELETE_WARDS = 'DELETE_WARD';
+
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAIL = 'REGISTER_FAIL'
 export const USER_LOADED = 'USER_LOADED'
