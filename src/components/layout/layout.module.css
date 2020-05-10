@@ -1,0 +1,82 @@
+@import '../../components/colors/colors.css';
+
+.logo{
+    height: 32px;
+    margin: 16px;
+}
+
+.sidebar{
+    background-color:var(--color-white) !important;
+    height: 100vh;
+    /* min-width: 250px !important; */
+    overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar{
+    width: 0.2rem;
+}
+
+.sidebar::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background: var(--primary-color-light);
+}
+
+.trigger{
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover{
+    color: var(--primary-color);
+}
+
+.space{
+    padding-top: 2rem;
+}
+
+.logo_box{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey-light-2);
+}
+
+.logo_box p{
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    color: var(--color-grey);
+}
+
+.hidden{
+    display: none;
+}
+
+.layoutWrapper{
+    padding: .5rem;
+    overflow-y: scroll;
+}
+
+.layoutWrapper::-webkit-scrollbar{
+    width: 0.4rem;
+}
+
+.layoutWrapper::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.layoutWrapper::-webkit-scrollbar-thumb{
+    background: var(--color-grey);
+    border-radius: 20px;
+}
+
+.content{
+    padding: 24px;
+    height: 200;
+}
+
