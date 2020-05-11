@@ -62,7 +62,7 @@ const Login = ({history}) => {
                         <img src={logo} alt="logo" className={styles.logo} onClick={() => history.push('/')}/>
                     </div>
 
-                    <Card title="jamboree" headStyle={headerStyles} className={styles.card_right}>
+                    <Card title="sign in" headStyle={headerStyles} className={styles.card_right}>
                         <Form name="login_form" initialValues={{remember: true}} onFinish={onFinish}>
                             <Form.Item 
                             label="username"

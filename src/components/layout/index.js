@@ -37,7 +37,10 @@ const AppLayout = ({match, history}) => {
    const goToMetroDistict = () => history.push('/main/metro/municipality/all');
    const goToLocalDistict = () => history.push('/main/local/municipality/all');
    const goToWards = () => history.push('/main/wards/all');
-   const gotToArea = () => history.push('/main/area/all')
+   const goToArea = () => history.push('/main/area/all');
+   const goToCbo = () => history.push('/main/cbo/all');
+   const goToBeneficiary = () => history.push('/main/beneficiary/all');
+   const gotToDevices = () => history.push('/main/device/all')
 
    const defaultOpenKeys = history.location.pathname.split('/')[2];
    const selectedKeys = history.location.pathname.substr(1);
@@ -108,16 +111,16 @@ const AppLayout = ({match, history}) => {
                   <Menu.Item key="main/wards/all" icon={<ClusterOutlined />} onClick={goToWards}>
                      Ward
                   </Menu.Item>
-                  <Menu.Item key="main/area/all" icon={<ClusterOutlined />} onClick={gotToArea}>
+                  <Menu.Item key="main/area/all" icon={<ClusterOutlined />} onClick={goToArea}>
                      Area
                   </Menu.Item>
-                  <Menu.Item key="cbo" icon={<ClusterOutlined />}>
+                  <Menu.Item key="main/cbo/all" icon={<ClusterOutlined />} onClick={goToCbo}>
                      CBO
                   </Menu.Item>
-                  <Menu.Item key="beneficiary" icon={<ClusterOutlined />}>
+                  <Menu.Item key="main/beneficiary/all" icon={<ClusterOutlined />} onClick={goToBeneficiary}>
                      Beneficiary
                   </Menu.Item>
-                  <Menu.Item key="device" icon={<ClusterOutlined />}>
+                  <Menu.Item key="main/device/all" icon={<ClusterOutlined />} onClick={gotToDevices}>
                      Device
                   </Menu.Item>
                </SubMenu>
