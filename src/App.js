@@ -10,6 +10,7 @@ import AreaState from './context/area/AreaState';
 import CboState from './context/cbo/CboState';
 import ProvinceState from './context/province/provinceState';
 import BeneficiaryState from './context/beneficiary/BeneficiaryState';
+import DeviceState from './context/device/DeviceState';
 
 import PrivateRoute from './components/privateRoute';
 import Landing from './components/landingPage';
@@ -30,15 +31,15 @@ function App() {
               <AreaState>
                 <CboState>
                   <BeneficiaryState>
-                    <Router>
-                      <div className="wrapper">
+                    <DeviceState>
+                      <Router>
                         <Switch>
                           <Route exact path="/" component={Landing}/>
                           <Route exact path="/login" component={Login}/>
                           <PrivateRoute path="/main" component={AppLayout}/>
                         </Switch>
-                      </div>
-                    </Router>
+                      </Router>
+                    </DeviceState>
                   </BeneficiaryState>  
                 </CboState>
               </AreaState>
