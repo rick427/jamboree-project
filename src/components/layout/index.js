@@ -127,10 +127,10 @@ const AppLayout = ({match, history}) => {
 
                <SubMenu key="voucher" icon={<UserOutlined />} title="Vouchers">
                   <Menu.Item key="vouchers" icon={<LaptopOutlined />}>
-                     Voucher Management
+                     Management
                   </Menu.Item>
                   <Menu.Item key="voucher_by_ecd" icon={<LaptopOutlined />}>
-                     Create Voucher / ECD
+                     Voucher / ECD
                   </Menu.Item>
                </SubMenu>
 
