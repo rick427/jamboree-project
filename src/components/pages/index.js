@@ -7,6 +7,7 @@ import MetroRoutes from './metro';
 import LocalRoutes from './local';
 import WardsRoutes from './wards';
 import AreaRoutes from './area';
+import BeneficiaryRoutes from './beneficiary';
 
 const AppPages = ({match}) => {
     return (
@@ -19,11 +20,11 @@ const AppPages = ({match}) => {
           <Route path={`${match.url}/wards`} component={WardsRoutes}/>
           <Route path={`${match.url}/area`} component={AreaRoutes}/>
           <Route path={`${match.url}/cbo`} component={CboRoutes}/>
+          <Route path={`${match.url}/beneficiary`} component={BeneficiaryRoutes}/>
           {/* 
           
           
           <Route path={`${match.url}/cbo`} component={MetroRoutes}/>
-          <Route path={`${match.url}/beneficiary`} component={MetroRoutes}/>
           <Route path={`${match.url}/device`} component={MetroRoutes}/> */}
         </Switch> 
     )

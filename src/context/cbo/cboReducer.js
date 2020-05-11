@@ -52,7 +52,7 @@ export default (state, action) => {
         case REQUEST_FAIL:
             return {
                 ...state,
-                metroErrors: action.payload
+                cboErrors: action.payload
             }
         default:
             return state;

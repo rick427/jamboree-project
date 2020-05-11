@@ -48,12 +48,12 @@ const EditCbo = ({history, match}) => {
 
         const updated = {...cbo, ...values};
         console.log(updated);
-        // editCbo(updated);
+        editCbo(updated);
 
-        // if(!error){
-        //     toast.success('Edited.', {autoClose: 4000, transition: Zoom});
-        //     history.push('/main/cbo/all');
-        // }
+        if(!error){
+            toast.success('Edited.', {autoClose: 4000, transition: Zoom});
+            history.push('/main/cbo/all');
+        }
     }
 
     const handleOptions = params => {

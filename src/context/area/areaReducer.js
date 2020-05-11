@@ -42,12 +42,12 @@ export default (state, action) => {
         case CLEAR_ERRORS:
             return  {
                 ...state,
-                metroErrors: null
+                areaError: null
             }
         case REQUEST_FAIL:
             return {
                 ...state,
-                metroErrors: action.payload
+                areaError: action.payload
             }
         default:
             return state;

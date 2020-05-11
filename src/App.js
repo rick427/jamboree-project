@@ -3,12 +3,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import setAuthToken from './utils/setAuthToken'
 import AuthState from './context/auth/authState';
-import ProvinceState from './context/province/provinceState';
 import MetroState from './context/metro/MetroState';
 import LocalState from './context/local/LocalState';
 import WardState from './context/ward/WardState';
 import AreaState from './context/area/AreaState';
 import CboState from './context/cbo/CboState';
+import ProvinceState from './context/province/provinceState';
+import BeneficiaryState from './context/beneficiary/BeneficiaryState';
 
 import PrivateRoute from './components/privateRoute';
 import Landing from './components/landingPage';
@@ -27,16 +28,18 @@ function App() {
           <LocalState>
             <WardState>
               <AreaState>
-                <CboState>  
-                  <Router>
-                    <div className="wrapper">
-                      <Switch>
-                        <Route exact path="/" component={Landing}/>
-                        <Route exact path="/login" component={Login}/>
-                        <PrivateRoute path="/main" component={AppLayout}/>
-                      </Switch>
-                    </div>
-                  </Router>
+                <CboState>
+                  <BeneficiaryState>
+                    <Router>
+                      <div className="wrapper">
+                        <Switch>
+                          <Route exact path="/" component={Landing}/>
+                          <Route exact path="/login" component={Login}/>
+                          <PrivateRoute path="/main" component={AppLayout}/>
+                        </Switch>
+                      </div>
+                    </Router>
+                  </BeneficiaryState>  
                 </CboState>
               </AreaState>
             </WardState>

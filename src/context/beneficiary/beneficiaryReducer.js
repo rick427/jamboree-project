@@ -1,21 +1,21 @@
-import { GET_ALL_WARDS, CREATE_WARDS, EDIT_WARDS, DELETE_WARDS, SET_LOADING, CLEAR_ERRORS, REQUEST_FAIL } from "../types";
+import { GET_ALL_BENEFICIARY, CREATE_BENEFICIARY, EDIT_BENEFICIARY, DELETE_BENEFICIARY, CLEAR_ERRORS, SET_LOADING, REQUEST_FAIL } from '../types';
 
 export default (state, action) => {
     switch(action.type){
-        case GET_ALL_WARDS:
+        case GET_ALL_BENEFICIARY:
             return {
                 ...state,
-                wards: action.payload,
+                beneficiaries: action.payload,
                 loading: false
             }
-        case CREATE_WARDS:
+        case CREATE_BENEFICIARY:
             return {
                 ...state,
-                wards: [...state.wards, {...action.payload}],
+                beneficiaries: [...state.beneficiaries, {...action.payload}],
                 loading: false
             }
-        case EDIT_WARDS:
-            const edited = state.wards.map(item => {
+        case EDIT_BENEFICIARY:
+            const edited = state.beneficiaries.map(item => {
                 if(item.id === action.payload.id){
                     return item = action.payload;
                 }
@@ -23,14 +23,14 @@ export default (state, action) => {
             });
             return {
                 ...state,
-                wards: edited,
+                beneficiaries: edited,
                 loading: false
             }
-        case DELETE_WARDS:
-            const deleted = state.wards.filter(item => item.id !== action.payload);
+        case DELETE_BENEFICIARY:
+            const deleted = state.beneficiaries.filter(item => item.id !== action.payload);
             return {
                 ...state,
-                wards: deleted,
+                beneficiaries: deleted,
                 loading: false
             }
         case SET_LOADING:
@@ -41,12 +41,12 @@ export default (state, action) => {
         case CLEAR_ERRORS:
             return  {
                 ...state,
-                wardErrors: null
+                beneficairyError: null
             }
         case REQUEST_FAIL:
             return {
                 ...state,
-                wardErrors: action.payload
+                beneficairyError: action.payload
             }
         default:
             return state;
